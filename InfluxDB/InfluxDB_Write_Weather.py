@@ -8,8 +8,8 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 
 api_key = "725b8b744d565459c216cdf0c153095f"
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
-city_name = "Carbondale"
-urlw = base_url + "appid=" + api_key + "&q=" + city_name + "&units=imperial"
+zipc = "62901"
+urlw = base_url + "appid=" + api_key + "&zip=" + zipc + "&units=imperial"
 
 token = "CTsee8YzfdrH9z56ngEI5CsnyNyNvMj06BRczLWARODEi8DEq_Y4UtFhdKDnAlQJTWCA5XEiPwzu91UYH6aHFg=="
 org = "stephen.berg24@gmail.com"
