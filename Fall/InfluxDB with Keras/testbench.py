@@ -30,6 +30,7 @@ drop = 0.0                  #Dropout parameter
 train_test_split = 0.8      #Training/Validation split percentage as decimal, 0.8 -> 80% training, 20% Validation
 loss_function = 'mse'       #Loss function to use with the optimizer, 'mse' and 'mae' should work
 n = 1
+t_interval = 5
 
 #Load Dataset, specify columns by name, None means all
 inputColumns = ['Time', 'PV_Power']
@@ -51,27 +52,27 @@ while True:
         write_api.write(bucket=bucket, org=org, record=p)
         p = influxdb_client.Point('test').field('PV_Power_Actual', float(Y[n-1:n][0][0]))
         write_api.write(bucket=bucket, org=org, record=p)
-        time.sleep(0.01)
+        time.sleep(t_interval/5)
         p = influxdb_client.Point('test').field('PV_Power_Pred', float(pred[0][1]))
         write_api.write(bucket=bucket, org=org, record=p)
         p = influxdb_client.Point('test').field('PV_Power_Actual', float(Y[n-1:n][0][1]))
         write_api.write(bucket=bucket, org=org, record=p)
-        time.sleep(0.01)
+        time.sleep(t_interval/5)
         p = influxdb_client.Point('test').field('PV_Power_Pred', float(pred[0][2]))
         write_api.write(bucket=bucket, org=org, record=p)
         p = influxdb_client.Point('test').field('PV_Power_Actual', float(Y[n-1:n][0][2]))
         write_api.write(bucket=bucket, org=org, record=p)
-        time.sleep(0.01)
+        time.sleep(t_interval/5)
         p = influxdb_client.Point('test').field('PV_Power_Pred', float(pred[0][3]))
         write_api.write(bucket=bucket, org=org, record=p)
         p = influxdb_client.Point('test').field('PV_Power_Actual', float(Y[n-1:n][0][3]))
         write_api.write(bucket=bucket, org=org, record=p)
-        time.sleep(0.01)
+        time.sleep(t_interval/5)
         p = influxdb_client.Point('test').field('PV_Power_Pred', float(pred[0][4]))
         write_api.write(bucket=bucket, org=org, record=p)
         p = influxdb_client.Point('test').field('PV_Power_Actual', float(Y[n-1:n][0][4]))
         write_api.write(bucket=bucket, org=org, record=p)
-        time.sleep(0.01)
+        time.sleep(t_interval/5)
     except Exception:
         print("Error")
     
