@@ -40,14 +40,14 @@ xx = []
 while True:
     try:
         pred = lstm.Predict(model, X[n:n+1], batch_size)
-        if n + 1 <= X.size:
+        if n + 1 <= X.size:                     ## counter to get the real data slice from Y
             n = n + 1
         else:
             n = 1
             
-        plt.clf()
+        plt.clf()                               ## clear the plot otherwise we will be writing the same data overlayed onto the previous
         
-        yy1.append(float(pred[0][0]))
+        yy1.append(float(pred[0][0]))           ## append the data to the list, do this 5 times since the predict function takes and returns 5 data points
         yy2.append(float(Y[n-1:n][0][0]))
         xx.append(t)
         
@@ -67,7 +67,7 @@ while True:
         yy2.append(float(Y[n-1:n][0][4]))
         xx.append(t+4)
         
-        if len(yy1) > 100:
+        if len(yy1) > 100:                      ## if we reach over 100 on the list, remove the first element
             yy1 = yy1[5:]
             yy2 = yy2[5:]
             xx = xx[5:]
@@ -75,21 +75,6 @@ while True:
         plt.plot(xx, yy1, 'r-', label="Prediction")
         plt.plot(xx, yy2, 'g-', label="True")
         plt.legend()
-        
-        #plt.scatter(t, float(pred[0][0]))
-        #plt.plot(t, float(Y[n-1:n][0][0]), 'g-', label="True Value")
-        
-        #plt.scatter(t+1, float(pred[0][1]))
-        #plt.plot(t+1, float(Y[n-1:n][0][1]), 'g-', label="True Value")
-        
-        #plt.scatter(t+2, float(pred[0][2]))
-        #plt.plot(t+2, float(Y[n-1:n][0][2]), 'g-', label="True Value")
-        
-        #plt.scatter(t+3, float(pred[0][3]))
-        #plt.plot(t+3, float(Y[n-1:n][0][3]), 'g-', label="True Value")
-        
-        #plt.scatter(t+4, float(pred[0][4]))
-        #plt.plot(t+4, float(Y[n-1:n][0][4]), 'g-', label="True Value")
         
         time.sleep(1)
         plt.savefig("fig.png")
