@@ -4,7 +4,9 @@ To run the code, run the testbench.py file with two arguments. The first argumen
 
 An example of this argument string is this:
 
+```
 python testbench.py save weather
+```
 
 This command will train a new model and save it based on the weather parameters along with time and PV power.
 
