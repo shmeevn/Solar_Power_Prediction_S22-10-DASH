@@ -7,3 +7,7 @@ An example of this argument string is this:
 python testbench.py save weather
 
 This command will train a new model and save it based on the weather parameters along with time and PV power.
+
+The combined.csv file is the historial weather and PV data combined.
+The tb_util.py file contains functions used in the testbench.
+Open the figpage html file to view the webpage.
